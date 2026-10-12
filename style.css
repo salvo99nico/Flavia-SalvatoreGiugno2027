@@ -185,3 +185,10 @@ footer .foot-date{font:400 14px var(--sans);font-style:normal;letter-spacing:.14
   .nav-in{gap:4px 15px;padding:10px 12px}
   .nav a{font-size:12.5px;letter-spacing:.04em}
 }
+/* IBAN su una sola riga, mai a capo */
+.ibans{grid-template-columns:1fr;gap:26px}
+.iban-card code{white-space:nowrap;word-break:normal;font-size:clamp(11.5px,3.5vw,15px);font-variant-numeric:tabular-nums}
+@media (max-width:360px){
+  .gift-box{padding:34px 14px}
+  .iban-card code{font-size:11px;letter-spacing:0}
+}
