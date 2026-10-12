@@ -208,3 +208,28 @@ const POLL_URL = "";
   refresh();
   if (!local) setInterval(refresh, 30000);
 })();
+
+// Selettore di tonalità: blu, terracotta, verde petrolio (la scelta resta salvata sul dispositivo)
+(function () {
+  const root = document.documentElement;
+  const dots = [...document.querySelectorAll(".tone-dot")];
+  if (!dots.length) return;
+  function recolorPetals() {
+    const cs = getComputedStyle(root).getPropertyValue("--petals").split(",").map((s) => s.trim()).filter(Boolean);
+    if (!cs.length) return;
+    document.querySelectorAll(".petal").forEach((p, i) => {
+      p.style.background = `linear-gradient(135deg, ${cs[i % cs.length]}, ${cs[(i + 2) % cs.length]})`;
+    });
+  }
+  function mark() {
+    const cur = root.getAttribute("data-tone") || "blu";
+    dots.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.t === cur)));
+  }
+  dots.forEach((b) => b.addEventListener("click", () => {
+    const t = b.dataset.t;
+    t === "blu" ? root.removeAttribute("data-tone") : root.setAttribute("data-tone", t);
+    try { localStorage.setItem("tonalita", t); } catch (e) {}
+    mark(); recolorPetals();
+  }));
+  mark(); recolorPetals();
+})();

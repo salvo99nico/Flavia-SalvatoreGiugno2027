@@ -13,13 +13,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet" />
-  <script>document.documentElement.classList.add("js");</script>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("tonalita");if(t){t==="blu"?document.documentElement.removeAttribute("data-tone"):document.documentElement.setAttribute("data-tone",t)}}catch(e){}</script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <div class="petals" aria-hidden="true"></div>
 <audio id="bgm" src="music.mp3" loop preload="none"></audio>
 <button type="button" class="music hint" id="musicBtn" aria-pressed="false" aria-label="Attiva la musica">♪</button>
+
+<div class="tones" role="group" aria-label="Scegli la tonalità del sito">
+  <button type="button" class="tone-dot" data-t="blu" style="--d:#1d4f8b" title="Blu" aria-label="Blu" aria-pressed="true"></button>
+  <button type="button" class="tone-dot" data-t="terracotta" style="--d:#b5593c" title="Terracotta" aria-label="Terracotta" aria-pressed="false"></button>
+  <button type="button" class="tone-dot" data-t="petrolio" style="--d:#1f5c62" title="Verde petrolio" aria-label="Verde petrolio" aria-pressed="false"></button>
+</div>
 
 <nav class="nav" aria-label="Menu">
   <div class="nav-in">
