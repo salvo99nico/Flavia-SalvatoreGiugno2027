@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flavia & Salvatore - 19 Giugno 2027</title>
+  <meta name="description" content="Invito digitale al matrimonio di Flavia e Salvatore - 19 Giugno 2027" />
+  <!-- Anteprima WhatsApp: sostituisci l'URL con l'indirizzo completo del tuo sito + nome foto -->
+  <meta property="og:title" content="Flavia & Salvatore - 19 Giugno 2027" />
+  <meta property="og:description" content="Ci sposiamo! Tutti i dettagli e la conferma di presenza." />
+  <meta property="og:image" content="https://salvo99nico.github.io/Flavia-SalvatoreGiugno2027/flavia-salvatore-2.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="petals" aria-hidden="true"></div>
+<audio id="bgm" src="music.mp3" loop preload="none"></audio>
+<button type="button" class="music hint" id="musicBtn" aria-pressed="false" aria-label="Attiva la musica">♪</button>
+<main class="page">
+
+  <section class="hero" id="home">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <div class="ambient ambient-three"></div>
+    <div class="hero-card reveal-start">
+      <h1 class="names"><span class="n1">Flavia</span><span class="amp">&amp;</span><span class="n2">Salvatore</span></h1>
+      <p class="date">19 Giugno 2027</p>
+      <p class="hero-script script">Ci sposiamo!</p>
+      <button class="primary-button" id="openButton">Scopri i dettagli</button>
+    </div>
+  </section>
+
+  <section class="intro reveal" id="details">
+    <div class="photo-card">
+      <img src="flavia-salvatore-2.jpg" alt="Flavia e Salvatore" class="couple-photo" width="1600" height="1600" loading="lazy" onerror="this.remove()" />
+      <div class="intro-text">
+        <p class="quote">Il giorno più bello della nostra vita lo vogliamo vivere insieme a voi.</p>
+      </div>
+      <!-- Video facoltativo: metti video.mp4 nella stessa cartella. Se manca, non si vede. -->
+      <video id="coupleVideo" class="couple-video" autoplay loop muted playsinline preload="auto" poster="video-poster.jpg" onerror="this.remove()">
+        <source src="video.mp4" type="video/mp4" onerror="document.getElementById('coupleVideo')?.remove()" />
+      </video>
+    </div>
+  </section>
+
+  <section class="countdown-section reveal">
+    <h2>Manca sempre meno</h2>
+    <div class="countdown" id="countdown" role="timer">
+      <div><strong id="days">--</strong><span>giorni</span></div>
+      <div><strong id="hours">--</strong><span>ore</span></div>
+      <div><strong id="minutes">--</strong><span>minuti</span></div>
+      <div><strong id="seconds">--</strong><span>secondi</span></div>
+    </div>
+  </section>
+
+  <section class="cards reveal">
+    <article class="event-card">
+      <div class="icon">⛪</div>
+      <h3>Cerimonia</h3>
+      <p>19 Giugno 2027<br><strong>Ore 16:00</strong></p>
+      <p>Parrocchia Sant'Anna<br>Balestrate</p>
+      <p class="arrive">Vi chiediamo di presentarvi in chiesa almeno 15 minuti prima dell'inizio.</p>
+      <a class="secondary-button" target="_blank" rel="noopener noreferrer"
+         href="https://www.google.com/maps/search/?api=1&query=Parrocchia%20Sant%27Anna%20Balestrate">Come arrivare</a>
+    </article>
+    <article class="event-card">
+      <div class="icon">🥂</div>
+      <h3>Ricevimento</h3>
+      <p>19 Giugno 2027<br><strong>Ore 18:30</strong></p>
+      <p>Borgo degli Angeli<br>Partinico</p>
+      <p class="arrive">Parcheggio privato all'interno della location.</p>
+      <a class="secondary-button" target="_blank" rel="noopener noreferrer"
+         href="https://www.google.com/maps/search/?api=1&query=Borgo%20degli%20Angeli%20Partinico">Come arrivare</a>
+    </article>
+  </section>
+
+  <section class="day reveal" id="giornata">
+    <h2>La giornata</h2>
+    <div class="tl">
+      <div class="tl-item"><span class="tl-time">16:00</span><h3>Cerimonia</h3><p>In chiesa, a Balestrate.</p></div>
+      <div class="tl-item"><span class="tl-time">Dopo la cerimonia</span><h3>Piccolo rinfresco</h3><p>Per chi vorrà, in un bar vicino alla chiesa.</p></div>
+      <div class="tl-item"><span class="tl-time">18:30</span><h3>Tutti alla location</h3><p>Ci ritroviamo al Borgo degli Angeli, a Partinico: sono circa 15 minuti di macchina.</p></div>
+      <div class="tl-item"><span class="tl-time">19:00</span><h3>Si festeggia!</h3><p>Cibo, musica e tanta festa, fino all'una di notte circa.</p></div>
+    </div>
+    <p class="cal-label">Non dimenticatevi la data</p>
+    <div class="cal-buttons">
+      <a class="secondary-button" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Matrimonio%20di%20Flavia%20e%20Salvatore&amp;dates=20270619T140000Z/20270619T230000Z&amp;location=Parrocchia%20Sant%27Anna%2C%20Balestrate%20%28PA%29&amp;details=Cerimonia%20alle%2016%3A00%20alla%20Parrocchia%20Sant%27Anna%20di%20Balestrate%20%28presentarsi%20almeno%2015%20minuti%20prima%29.%20Dalle%2018%3A30%20al%20Borgo%20degli%20Angeli%20di%20Partinico%3A%20cena%2C%20musica%20e%20festa%20fino%20all%271%20circa.%20Dress%20code%3A%20elegante.%20https%3A//salvo99nico.github.io/Flavia-SalvatoreGiugno2027/">Google Calendar</a>
+      <a class="secondary-button" href="matrimonio-flavia-salvatore.ics" download>Apple / Outlook</a>
+    </div>
+  </section>
+
+  <section class="info reveal" id="info">
+    <h2>Da sapere</h2>
+    <div class="info-item"><h3>Dress code</h3><p>Elegante, per un giorno importante.</p></div>
+    <div class="info-item"><h3>Parcheggio alla chiesa</h3><p>Si può lasciare l'auto negli stalli intorno alla chiesa, oppure lungo la spiaggia, raggiungendo poi la chiesa a piedi. In estate il centro può essere affollato: vi consigliamo di arrivare con un po' di anticipo.</p></div>
+    <div class="info-item"><h3>Parcheggio alla location</h3><p>Il Borgo degli Angeli ha un parcheggio privato all'interno della struttura.</p></div>
+    <div class="info-item"><h3>Dove dormire</h3><p>Per chi arriva da fuori Palermo, nella zona di Balestrate e Partinico ci sono molti hotel e strutture dove soggiornare.</p></div>
+    <p class="quote far">Per chi viene da lontano, vorremmo che fosse l'occasione di stare insieme alle nostre famiglie e di scoprire un po' di Sicilia, magari concedendosi anche un bagno in mare.</p>
+  </section>
+
+  <section class="rsvp reveal" id="rsvp">
+    <h2>Ci sarai?</h2>
+    <p>Vi chiediamo di confermare la vostra presenza o assenza entro il <strong>31 marzo 2027</strong>.</p>
+    <p>Compila i campi: si aprirà WhatsApp con il messaggio già pronto per Salvatore.</p>
+
+    <form id="rsvpForm">
+      <label for="name">Nome e cognome</label>
+      <input required id="name" type="text" autocomplete="name" />
+
+      <fieldset>
+        <legend>Ci sarai?</legend>
+        <div class="choices">
+          <label><input type="radio" name="presence" value="si" required /> Sì, ci sarò!</label>
+          <label><input type="radio" name="presence" value="no" /> Purtroppo no</label>
+        </div>
+      </fieldset>
+
+      <div id="details-yes" class="hide">
+        <div class="two">
+          <div>
+            <label for="adults">Quanti adulti?</label>
+            <input id="adults" type="number" min="1" max="10" value="1" />
+          </div>
+          <div>
+            <label for="kids">Quanti bambini?</label>
+            <input id="kids" type="number" min="0" max="10" value="0" />
+          </div>
+        </div>
+        <div id="agesBox" class="hide">
+          <label for="ages">Che età hanno i bambini?</label>
+          <input id="ages" type="text" placeholder="Es. 3 anni e 8 anni" />
+        </div>
+        <label for="allergies">Allergie o intolleranze</label>
+        <textarea id="allergies" rows="3" placeholder="Anche per chi viene con te"></textarea>
+      </div>
+
+      <label for="notes">Un messaggio per noi (facoltativo)</label>
+      <textarea id="notes" rows="3"></textarea>
+
+      <button class="primary-button" type="submit">Prepara conferma WhatsApp</button>
+    </form>
+    <p class="small-note">Potrai modificare il messaggio prima di inviarlo.</p>
+  </section>
+
+  <section class="gift reveal">
+    <div class="gift-box">
+      <h2 class="script">Un pensiero per noi</h2>
+      <p class="big">La nostra casa è già arredata e piena d'amore.</p>
+      <p>Il dono più bello è avervi accanto a noi in questo giorno. Se desiderate farci anche un regalo, saremo felici di ricevere un aiuto per realizzare i nostri sogni futuri.</p>
+      <p class="thanks">Grazie di cuore, Flavia e Salvatore</p>
+      <p class="iban-intro">Per chi preferisce un bonifico:</p>
+      <div class="ibans">
+        <div class="iban-card">
+          <strong>Salvatore Nicosia</strong>
+          <span>Fineco Bank</span>
+          <code>IT28 E030 1503 2000 0000 6338 228</code>
+          <button type="button" class="secondary-button copy-iban" data-iban="IT28E0301503200000006338228">Copia IBAN</button>
+        </div>
+        <div class="iban-card">
+          <strong>Flavia Venturoli</strong>
+          <span>Fineco Bank</span>
+          <code>IT97 H030 1503 2000 0000 6348 260</code>
+          <button type="button" class="secondary-button copy-iban" data-iban="IT97H0301503200000006348260">Copia IBAN</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacts reveal">
+    <h2>Per qualsiasi informazione</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="tel:+393924914903"><span>Salvatore</span><strong>392 491 4903</strong></a>
+      <a class="contact-card" href="tel:+393315056616"><span>Flavia</span><strong>331 505 6616</strong></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Non vediamo l'ora di festeggiare insieme a voi ❤️</p>
+    <p class="signature script">Flavia &amp; Salvatore</p>
+  </footer>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>

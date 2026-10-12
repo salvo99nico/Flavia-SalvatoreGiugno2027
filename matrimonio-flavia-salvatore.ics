@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Flavia e Salvatore//Matrimonio//IT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:matrimonio-flavia-salvatore-20270619@salvo99nico.github.io
+DTSTAMP:20261012T000000Z
+DTSTART:20270619T140000Z
+DTEND:20270619T230000Z
+SUMMARY:Matrimonio di Flavia e Salvatore
+LOCATION:Parrocchia Sant'Anna\, Balestrate (PA)
+DESCRIPTION:Cerimonia alle 16:00 alla Parrocchia Sant'Anna di Balestrate 
+ (presentarsi almeno 15 minuti prima). Dalle 18:30 al Borgo degli Angeli 
+ di Partinico: cena\, musica e festa fino all'1 circa. Dress code: elegan
+ te. https://salvo99nico.github.io/Flavia-SalvatoreGiugno2027/
+URL:https://salvo99nico.github.io/Flavia-SalvatoreGiugno2027/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Domani il matrimonio di Flavia e Salvatore
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT3H
+ACTION:DISPLAY
+DESCRIPTION:Tra poco la cerimonia: arrivate 15 minuti prima
+END:VALARM
+END:VEVENT
+END:VCALENDAR
