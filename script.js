@@ -83,7 +83,8 @@ form.addEventListener("submit", (event) => {
   if (!box) return;
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const count = window.innerWidth < 720 ? 16 : 30;
-  const colors = ["#c46f4d", "#b85c3b", "#d88b68", "#9f4f38", "#e5a077"];
+  const fromCss = getComputedStyle(document.documentElement).getPropertyValue("--petals").split(",").map((s) => s.trim()).filter(Boolean);
+  const colors = fromCss.length ? fromCss : ["#c46f4d", "#b85c3b", "#d88b68", "#9f4f38", "#e5a077"];
   const rnd = (a, b) => a + Math.random() * (b - a);
   for (let i = 0; i < count; i++) {
     const p = document.createElement("span");
@@ -134,3 +135,76 @@ document.querySelectorAll(".copy-iban").forEach((btn) => {
     setTimeout(() => (btn.textContent = old), 2000);
   });
 });
+
+// Sondaggio dei colori
+// Per far vedere a tutti i voti, incolla qui l'indirizzo del tuo database Firebase (vedi istruzioni), ad esempio:
+// "https://NOME-PROGETTO-default-rtdb.europe-west1.firebasedatabase.app/sondaggio"
+// Se resta vuoto, il sondaggio funziona in "prova" e i voti si vedono solo su questo dispositivo.
+const POLL_URL = "";
+
+(function () {
+  const opts = [...document.querySelectorAll(".opt")];
+  const meta = $("pollMeta");
+  if (!opts.length || !meta) return;
+  const local = !POLL_URL;
+  const store = {
+    get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} },
+  };
+  let mine = store.get("votoColore");
+
+  async function counts() {
+    const votes = {};
+    if (local) {
+      try { Object.assign(votes, JSON.parse(store.get("votiLocali") || "{}")); } catch (e) {}
+    } else {
+      const r = await fetch(POLL_URL + "/votes.json");
+      if (!r.ok) throw new Error("lettura");
+      const data = (await r.json()) || {};
+      Object.values(data).forEach((v) => { if (v && v.k) votes[v.k] = (votes[v.k] || 0) + 1; });
+    }
+    return votes;
+  }
+
+  function render(votes) {
+    const total = opts.reduce((s, o) => s + (votes[o.dataset.k] || 0), 0);
+    opts.forEach((o) => {
+      const n = votes[o.dataset.k] || 0;
+      const p = total ? Math.round((n * 100) / total) : 0;
+      o.style.setProperty("--p", p + "%");
+      o.querySelector(".pc").textContent = p + "%";
+      o.classList.toggle("mine", mine === o.dataset.k);
+      o.disabled = !!mine;
+    });
+    let t = total + (total === 1 ? " voto" : " voti");
+    t += mine ? " · grazie per aver votato!" : " · toccate un colore per votare";
+    if (local) t += " (prova: risultati visibili solo su questo dispositivo)";
+    meta.textContent = t;
+  }
+
+  async function refresh() {
+    try { render(await counts()); }
+    catch (e) { meta.textContent = "Al momento non riusciamo a caricare i voti."; }
+  }
+
+  opts.forEach((o) => o.addEventListener("click", async () => {
+    if (mine) return;
+    const k = o.dataset.k;
+    try {
+      if (local) {
+        const v = await counts(); v[k] = (v[k] || 0) + 1;
+        store.set("votiLocali", JSON.stringify(v));
+      } else {
+        const r = await fetch(POLL_URL + "/votes.json", { method: "POST", body: JSON.stringify({ k, t: Date.now() }) });
+        if (!r.ok) throw new Error("scrittura");
+      }
+      mine = k; store.set("votoColore", k);
+      await refresh();
+    } catch (e) {
+      meta.textContent = "Non siamo riusciti a registrare il voto. Riprovate tra poco.";
+    }
+  }));
+
+  refresh();
+  if (!local) setInterval(refresh, 30000);
+})();
