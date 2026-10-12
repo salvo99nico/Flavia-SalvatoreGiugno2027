@@ -140,7 +140,7 @@ document.querySelectorAll(".copy-iban").forEach((btn) => {
 // Per far vedere a tutti i voti, incolla qui l'indirizzo del tuo database Firebase (vedi istruzioni), ad esempio:
 // "https://NOME-PROGETTO-default-rtdb.europe-west1.firebasedatabase.app/sondaggio"
 // Se resta vuoto, il sondaggio funziona in "prova" e i voti si vedono solo su questo dispositivo.
-const POLL_URL = "";
+const POLL_URL = "https://matrimonio-flavia-e-salvo-default-rtdb.europe-west1.firebasedatabase.app";
 
 (function () {
   const opts = [...document.querySelectorAll(".opt")];
