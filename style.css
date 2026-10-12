@@ -170,3 +170,13 @@ footer .foot-date{font:400 14px var(--sans);font-style:normal;letter-spacing:.14
   .nav-in{gap:6px 18px}
   .contact-card strong{font-size:21px}
 }
+
+/* Programma a 5 tappe e testi "Da sapere" */
+.tl{grid-template-columns:repeat(5,1fr);max-width:1040px}
+.tl-item{padding:6px 12px}
+.info-item .sub{font:italic 500 19px var(--serif);color:var(--muted);margin:0 0 8px}
+.quote.far{font-size:clamp(18px,3.2vw,22px);max-width:680px}
+@media (max-width:980px){
+  .tl{grid-template-columns:1fr;max-width:420px}
+  .tl-item+.tl-item{border-left:0;border-top:1px solid var(--line);margin-top:14px;padding-top:20px}
+}
