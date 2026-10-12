@@ -229,9 +229,48 @@ footer .foot-date{font:400 14px var(--sans);font-style:normal;letter-spacing:.14
   .opt .nm{font-size:18px}.opt .dot{width:14px;height:14px}
 }
 
-/* Selettore di tonalità */
-.tones{position:fixed;z-index:20;left:max(14px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));display:flex;gap:6px;align-items:center;
-  padding:8px 10px;background:var(--nav);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:999px;box-shadow:0 10px 24px rgba(27,42,61,.2)}
-.tone-dot{width:28px;height:28px;border-radius:50%;border:3px solid #fff;background:var(--d);cursor:pointer;padding:0;box-shadow:0 0 0 1px var(--line);transition:transform .2s,box-shadow .2s}
-.tone-dot[aria-pressed="true"]{box-shadow:0 0 0 2.5px var(--d);transform:scale(1.08)}
-@media (hover:hover){.tone-dot:hover{transform:scale(1.12)}}
+/* Selettore di tonalità integrato nel menu */
+.tones {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 8px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  margin-left: auto;
+}
+
+.tone-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: var(--d);
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 0 0 1px var(--line);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.tone-dot[aria-pressed="true"] {
+  box-shadow: 0 0 0 2px var(--d);
+  transform: scale(1.15);
+}
+
+@media (hover: hover) {
+  .tone-dot:hover {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 560px) {
+  .tones {
+    margin-left: 0;
+    padding: 3px 6px;
+  }
+  .tone-dot {
+    width: 20px;
+    height: 20px;
+  }
+}
