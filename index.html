@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flavia & Salvatore - 19 Giugno 2027</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#1d4f8b" />
+  <meta name="description" content="Invito digitale al matrimonio di Flavia e Salvatore - 19 Giugno 2027" />
+  <!-- Anteprima WhatsApp: sostituisci l'URL con l'indirizzo completo del tuo sito + nome foto -->
+  <meta property="og:title" content="Flavia & Salvatore - 19 Giugno 2027" />
+  <meta property="og:description" content="Ci sposiamo! Tutti i dettagli e la conferma di presenza." />
+  <meta property="og:image" content="https://salvo99nico.github.io/Flavia-SalvatoreGiugno2027/foto-coppia.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet" />
+  <script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("introVisto")&&!/[?&]intro/.test(location.search))document.documentElement.classList.add("intro-done")}catch(e){}try{var t=localStorage.getItem("tonalita");if(t){t==="blu"?document.documentElement.removeAttribute("data-tone"):document.documentElement.setAttribute("data-tone",t)}}catch(e){}</script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><g id="bl2"><g><circle class="p1" cx="0" cy="-9" r="8"/><circle class="p2" cx="8.6" cy="-2.8" r="8"/><circle class="p1" cx="5.3" cy="7.3" r="8"/><circle class="p2" cx="-5.3" cy="7.3" r="8"/><circle class="p1" cx="-8.6" cy="-2.8" r="8"/></g><circle class="pc" r="4.5"/></g><g id="garG"><path class="vine" d="M-10 38C70 8 150 74 236 40S400 16 490 56"/><path class="vine" d="M26 -10C58 78 -6 150 30 238S6 320 34 372"/><g class="lf"><ellipse cx="60" cy="26" rx="19" ry="7" transform="rotate(-25 60 26)"/><ellipse cx="122" cy="56" rx="19" ry="7" transform="rotate(28 122 56)"/><ellipse cx="192" cy="66" rx="19" ry="7" transform="rotate(-30 192 66)"/><ellipse cx="262" cy="34" rx="19" ry="7" transform="rotate(26 262 34)"/><ellipse cx="332" cy="30" rx="19" ry="7" transform="rotate(-28 332 30)"/><ellipse cx="402" cy="28" rx="19" ry="7" transform="rotate(24 402 28)"/><ellipse cx="452" cy="46" rx="19" ry="7" transform="rotate(-22 452 46)"/><ellipse cx="40" cy="92" rx="19" ry="7" transform="rotate(60 40 92)"/><ellipse cx="14" cy="168" rx="19" ry="7" transform="rotate(-60 14 168)"/><ellipse cx="42" cy="236" rx="19" ry="7" transform="rotate(58 42 236)"/><ellipse cx="18" cy="310" rx="19" ry="7" transform="rotate(-58 18 310)"/></g><use href="#bl2" transform="translate(38 38) scale(2.3)"/><use href="#bl2" transform="translate(108 46) scale(1.5)"/><use href="#bl2" transform="translate(178 64) scale(2.1)"/><use href="#bl2" transform="translate(250 40) scale(1.4)"/><use href="#bl2" transform="translate(330 28) scale(2.0)"/><use href="#bl2" transform="translate(412 30) scale(1.3)"/><use href="#bl2" transform="translate(450 50) scale(1.0)"/><use href="#bl2" transform="translate(40 102) scale(1.7)"/><use href="#bl2" transform="translate(14 178) scale(2.2)"/><use href="#bl2" transform="translate(38 252) scale(1.5)"/><use href="#bl2" transform="translate(22 324) scale(1.9)"/><use href="#bl2" transform="translate(86 22) scale(1.0)"/><use href="#bl2" transform="translate(60 150) scale(1.0)"/></g></defs></svg>
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Benvenuti al matrimonio di Flavia e Salvatore">
+  <div class="intro-bg"></div>
+  <div class="door door-l">
+    <svg class="gar gar-top" viewBox="0 0 480 360" preserveAspectRatio="xMinYMin meet" aria-hidden="true"><use href="#garG"/></svg>
+    <svg class="gar gar-bot" viewBox="0 0 480 360" preserveAspectRatio="xMinYMin meet" aria-hidden="true"><use href="#garG"/></svg>
+  </div>
+  <div class="door door-r">
+    <svg class="gar gar-top" viewBox="0 0 480 360" preserveAspectRatio="xMinYMin meet" aria-hidden="true"><use href="#garG"/></svg>
+    <svg class="gar gar-bot" viewBox="0 0 480 360" preserveAspectRatio="xMinYMin meet" aria-hidden="true"><use href="#garG"/></svg>
+  </div>
+  <div class="intro-center">
+    <p class="intro-names script"><span>Flavia</span><span class="amp">&amp;</span><span>Salvatore</span></p>
+    <p class="intro-date">19 · 06 · 2027</p>
+    <button type="button" class="intro-btn" id="introBtn">Tocca per entrare</button>
+    <p class="intro-hint">♪ con musica</p>
+  </div>
+</div>
+
+<div class="petals" aria-hidden="true"></div>
+<audio id="bgm" src="music.mp3" loop preload="none"></audio>
+<button type="button" class="music hint" id="musicBtn" aria-pressed="false" aria-label="Attiva la musica">♪</button>
+
+<div class="tones" role="group" aria-label="Scegli la tonalità del sito">
+  <button type="button" class="tone-dot" data-t="blu" style="--d:#1d4f8b" title="Blu" aria-label="Blu" aria-pressed="true"></button>
+  <button type="button" class="tone-dot" data-t="terracotta" style="--d:#b5593c" title="Terracotta" aria-label="Terracotta" aria-pressed="false"></button>
+  <button type="button" class="tone-dot" data-t="petrolio" style="--d:#1f5c62" title="Verde petrolio" aria-label="Verde petrolio" aria-pressed="false"></button>
+</div>
+
+<nav class="nav" aria-label="Menu">
+  <div class="nav-in">
+    <span class="brand script">F &amp; S</span>
+    <a href="#details">I luoghi</a>
+    <a href="#giornata">La giornata</a>
+    <a href="#info">Info</a>
+    <a href="#rsvp">Conferma</a>
+    <a href="#regalo">Regalo</a>
+  </div>
+</nav>
+
+<main class="page">
+
+  <header class="hero reveal-start" id="home">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1 class="names script"><span>Flavia</span><span class="amp">&amp;</span><span>Salvatore</span></h1>
+        <p class="date">19 · 06 · 2027</p>
+        <p class="hero-script script">Ci sposiamo!</p>
+        <div class="hero-buttons">
+          <a class="primary-button" id="openButton" href="#details">Come arrivare</a>
+          <a class="ghost-button" href="#rsvp">Conferma la presenza</a>
+        </div>
+        <div class="countdown" id="countdown" role="timer">
+          <div><strong id="days">--</strong><span>giorni</span></div>
+          <div><strong id="hours">--</strong><span>ore</span></div>
+          <div><strong id="minutes">--</strong><span>minuti</span></div>
+          <div><strong id="seconds">--</strong><span>secondi</span></div>
+        </div>
+      </div>
+      <img src="foto-coppia.jpg" alt="Flavia e Salvatore" class="hero-photo" width="1000" height="1000" onerror="this.remove()" />
+    </div>
+  </header>
+
+  <section class="places reveal" id="details">
+    <span class="overline">Ci vediamo qui</span>
+    <h2>Dove festeggiamo</h2>
+    <div class="cards">
+      <article class="card">
+        <span class="tag">01 · La cerimonia</span>
+        <h3>Parrocchia Sant'Anna</h3>
+        <p>Balestrate (PA)</p>
+        <p class="big-time">Ore 16:00</p>
+        <p class="arrive">Vi chiediamo la gentilezza di presentarvi in chiesa almeno 15 minuti prima dell'inizio.</p>
+        <a class="secondary-button" target="_blank" rel="noopener noreferrer"
+           href="https://www.google.com/maps/search/?api=1&amp;query=Parrocchia%20Sant%27Anna%20Balestrate">Come arrivare</a>
+      </article>
+      <article class="card">
+        <span class="tag">02 · Il ricevimento</span>
+        <h3>Borgo degli Angeli</h3>
+        <p>Partinico (PA)</p>
+        <p class="big-time">Ore 18:30</p>
+        <p class="arrive">Parcheggio privato all'interno della location.</p>
+        <a class="secondary-button" target="_blank" rel="noopener noreferrer"
+           href="https://www.google.com/maps/search/?api=1&amp;query=Borgo%20degli%20Angeli%20Partinico">Come arrivare</a>
+      </article>
+    </div>
+  </section>
+
+  <div class="quote-band reveal">
+    <p class="q">Il giorno più bello della nostra vita lo vogliamo vivere insieme a voi.</p>
+    <p class="sign">Flavia &amp; Salvatore ♥</p>
+  </div>
+
+  <section class="band reveal" id="giornata">
+    <span class="overline">Il programma</span>
+    <h2>La giornata</h2>
+    <div class="tl">
+      <div class="tl-item"><span class="tl-time">16:00</span><h3>Cerimonia</h3><p>In chiesa, a Balestrate.</p></div>
+      <div class="tl-item"><span class="tl-time">Dopo la cerimonia</span><h3>Piccolo rinfresco</h3><p>Per chi vorrà, in un bar vicino alla chiesa.</p></div>
+      <div class="tl-item"><span class="tl-time">18:30</span><h3>Tutti alla location</h3><p>Borgo degli Angeli, a Partinico: circa 15 minuti di macchina.</p></div>
+      <div class="tl-item"><span class="tl-time">19:00</span><h3>Si festeggia!</h3><p>Cibo, musica e balli per vivere insieme una serata indimenticabile.</p></div>
+      <div class="tl-item"><span class="tl-time">00:00</span><h3>Il taglio della torta</h3><p>Un brindisi sotto le stelle e gli ultimi momenti di festa fino all'una circa.</p></div>
+    </div>
+    <p class="note">Gli orari dopo la cerimonia sono indicativi.</p>
+    <p class="cal-label">Non dimenticatevi la data</p>
+    <div class="cal-buttons">
+      <a class="secondary-button" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Matrimonio%20di%20Flavia%20e%20Salvatore&amp;dates=20270619T140000Z/20270619T230000Z&amp;location=Parrocchia%20Sant%27Anna%2C%20Balestrate%20%28PA%29&amp;details=Cerimonia%20alle%2016%3A00%20alla%20Parrocchia%20Sant%27Anna%20di%20Balestrate%20%28presentarsi%20almeno%2015%20minuti%20prima%29.%20Dalle%2018%3A30%20al%20Borgo%20degli%20Angeli%20di%20Partinico%3A%20cena%2C%20musica%20e%20festa%20fino%20all%271%20circa.%20Dress%20code%3A%20elegante.%20https%3A//salvo99nico.github.io/Flavia-SalvatoreGiugno2027/">Google Calendar</a>
+      <a class="secondary-button" href="matrimonio-flavia-salvatore.ics" download>Apple / Outlook</a>
+    </div>
+  </section>
+
+  <section class="media reveal">
+    <video id="coupleVideo" class="couple-video" autoplay loop muted playsinline preload="auto" poster="video-poster.jpg" onerror="this.remove()">
+      <source src="video.mp4" type="video/mp4" onerror="document.getElementById('coupleVideo')?.remove()" />
+    </video>
+  </section>
+
+  <section class="band reveal" id="info">
+    <span class="overline">Qualche dettaglio utile</span>
+    <h2>Da sapere</h2>
+    <div class="info-grid">
+      <div class="info-item"><h3>Dress code</h3><p class="sub">L'eleganza delle grandi occasioni</p><p>Indossate il vostro abito più bello per celebrare insieme a noi un giorno indimenticabile.</p></div>
+      <div class="info-item"><h3>Parcheggio in chiesa</h3><p class="sub">Raggiungere la cerimonia</p><p>Troverete parcheggio negli stalli adiacenti alla chiesa o lungo la vicina spiaggia, per poi raggiungerci con una breve e piacevole passeggiata. Essendo un periodo estivo e vivace, vi suggeriamo di arrivare con un piccolo anticipo per godervi l'atmosfera in totale serenità.</p></div>
+      <div class="info-item"><h3>Parcheggio in location</h3><p class="sub">L'arrivo al Borgo</p><p>Ad accogliervi al Borgo degli Angeli troverete un comodo parcheggio privato all'interno della struttura, per lasciarvi guidare senza pensieri nella festa.</p></div>
+      <div class="info-item"><h3>Dove soggiornare</h3><p class="sub">Il vostro soggiorno</p><p>Per chi desidera accompagnarci da più lontano, nei dintorni di Balestrate e Partinico troverete deliziose strutture e hotel pronti ad accogliervi.</p></div>
+    </div>
+    <p class="quote far">Sogniamo che questa festa sia molto più di un giorno speciale: un'occasione preziosa per riabbracciare le nostre famiglie, condividere momenti felici e farvi innamorare dei profumi e delle meraviglie della nostra Sicilia, magari concedendovi un tuffo rigenerante nelle sue acque cristalline.</p>
+  </section>
+
+  <section class="band reveal" id="colori">
+    <span class="overline">Un piccolo sondaggio</span>
+    <h2>Indovinate i nostri colori</h2>
+    <p>Secondo voi, quale sarà il colore principale del nostro matrimonio? Votate e guardate cosa pensano gli altri invitati.</p>
+    <div class="poll" id="poll">
+      <button type="button" class="opt" data-k="blu" style="--sw:#1d4f8b"><span class="dot"></span><span class="nm">Blu</span><span class="bar"><i></i></span><span class="pc">0%</span></button>
+      <button type="button" class="opt" data-k="terracotta" style="--sw:#b5593c"><span class="dot"></span><span class="nm">Terracotta</span><span class="bar"><i></i></span><span class="pc">0%</span></button>
+      <button type="button" class="opt" data-k="petrolio" style="--sw:#1f5c62"><span class="dot"></span><span class="nm">Verde petrolio</span><span class="bar"><i></i></span><span class="pc">0%</span></button>
+    </div>
+    <p class="poll-meta" id="pollMeta">Caricamento…</p>
+  </section>
+
+  <section class="rsvp reveal" id="rsvp">
+    <div class="form-card">
+      <span class="overline">Conferma</span>
+      <h2>Ci sarai?</h2>
+      <p>Vi chiediamo di confermare la vostra presenza o assenza entro il <strong>31 marzo 2027</strong>.</p>
+      <p>Compila i campi: si aprirà WhatsApp con il messaggio già pronto per Salvatore.</p>
+
+      <form id="rsvpForm">
+        <label for="name">Nome e cognome</label>
+        <input required id="name" type="text" autocomplete="name" />
+
+        <fieldset>
+          <legend>Ci sarai?</legend>
+          <div class="choices">
+            <label><input type="radio" name="presence" value="si" required /> Sì, ci sarò!</label>
+            <label><input type="radio" name="presence" value="no" /> Purtroppo no</label>
+          </div>
+        </fieldset>
+
+        <div id="details-yes" class="hide">
+          <div class="two">
+            <div>
+              <label for="adults">Quanti adulti?</label>
+              <input id="adults" type="number" min="1" max="10" value="1" />
+            </div>
+            <div>
+              <label for="kids">Quanti bambini?</label>
+              <input id="kids" type="number" min="0" max="10" value="0" />
+            </div>
+          </div>
+          <div id="agesBox" class="hide">
+            <label for="ages">Che età hanno i bambini?</label>
+            <input id="ages" type="text" placeholder="Es. 3 anni e 8 anni" />
+          </div>
+          <label for="allergies">Allergie o intolleranze</label>
+          <textarea id="allergies" rows="3" placeholder="Anche per chi viene con te"></textarea>
+        </div>
+
+        <label for="notes">Un messaggio per noi (facoltativo)</label>
+        <textarea id="notes" rows="3"></textarea>
+
+        <button class="primary-button" type="submit">Prepara conferma WhatsApp</button>
+      </form>
+      <p class="small-note">Potrai modificare il messaggio prima di inviarlo.</p>
+    </div>
+  </section>
+
+  <section class="gift reveal" id="regalo">
+    <div class="gift-box">
+      <h2 class="script">Un pensiero per noi</h2>
+      <p class="big">La nostra casa è già piena d'amore e di tutto ciò che ci serve.</p>
+      <p>Il regalo più grande è avervi al nostro fianco in questo giorno speciale. Se desiderate farci un pensiero, saremo felici di ricevere un contributo per realizzare i nostri sogni futuri e il nostro viaggio.</p>
+      <p class="thanks">Grazie di cuore, Flavia e Salvatore</p>
+      <p class="iban-intro">Per chi preferisce un bonifico:</p>
+      <div class="ibans">
+        <div class="iban-card">
+          <strong>Salvatore Nicosia</strong>
+          <span>Fineco Bank</span>
+          <code>IT28 E030 1503 2000 0000 6338 228</code>
+          <button type="button" class="secondary-button copy-iban" data-iban="IT28E0301503200000006338228">Copia IBAN</button>
+        </div>
+        <div class="iban-card">
+          <strong>Flavia Venturoli</strong>
+          <span>Fineco Bank</span>
+          <code>IT97 H030 1503 2000 0000 6348 260</code>
+          <button type="button" class="secondary-button copy-iban" data-iban="IT97H0301503200000006348260">Copia IBAN</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band reveal">
+    <h2>Per qualsiasi informazione</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="tel:+393924914903"><span>Salvatore</span><strong>392 491 4903</strong></a>
+      <a class="contact-card" href="tel:+393315056616"><span>Flavia</span><strong>331 505 6616</strong></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Non vediamo l'ora di festeggiare insieme a voi ❤️</p>
+    <p class="signature script">Flavia &amp; Salvatore</p>
+    <p class="foot-date">19 giugno 2027 · Balestrate &amp; Partinico</p>
+  </footer>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>
