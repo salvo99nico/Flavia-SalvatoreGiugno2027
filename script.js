@@ -140,7 +140,7 @@ document.querySelectorAll(".copy-iban").forEach((btn) => {
 // Per far vedere a tutti i voti, incolla qui l'indirizzo del tuo database Firebase (vedi istruzioni), ad esempio:
 // "https://NOME-PROGETTO-default-rtdb.europe-west1.firebasedatabase.app/sondaggio"
 // Se resta vuoto, il sondaggio funziona in "prova" e i voti si vedono solo su questo dispositivo.
-const POLL_URL = "https://matrimonio-flavia-e-salvo-default-rtdb.europe-west1.firebasedatabase.app";
+const POLL_URL = "";
 
 (function () {
   const opts = [...document.querySelectorAll(".opt")];
@@ -232,4 +232,33 @@ const POLL_URL = "https://matrimonio-flavia-e-salvo-default-rtdb.europe-west1.fi
     mark(); recolorPetals();
   }));
   mark(); recolorPetals();
+})();
+
+// Apertura: tocca per far aprire il cancello (la musica parte con questo tocco)
+(function () {
+  const intro = $("intro");
+  if (!intro) return;
+  const root = document.documentElement;
+  if (root.classList.contains("intro-done")) { intro.remove(); return; }
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let opened = false;
+  function finish() {
+    root.classList.add("intro-done");
+    try { sessionStorage.setItem("introVisto", "1"); } catch (e) {}
+    intro.remove();
+    window.scrollTo(0, 0);
+  }
+  function open() {
+    if (opened) return;
+    opened = true;
+    const audio = $("bgm");
+    if (audio && audio.paused) $("musicBtn")?.click();
+    if (reduce) { finish(); return; }
+    intro.classList.add("open");
+    setTimeout(() => intro.classList.add("leave"), 1900);
+    setTimeout(finish, 3100);
+  }
+  intro.addEventListener("click", open);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !opened) open(); });
+  $("introBtn")?.focus({ preventScroll: true });
 })();

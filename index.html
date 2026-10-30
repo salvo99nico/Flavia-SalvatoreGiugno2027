@@ -17,10 +17,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet" />
-  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("tonalita");if(t){t==="blu"?document.documentElement.removeAttribute("data-tone"):document.documentElement.setAttribute("data-tone",t)}}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{if(sessionStorage.getItem("introVisto")&&!/[?&]intro/.test(location.search))document.documentElement.classList.add("intro-done")}catch(e){}try{var t=localStorage.getItem("tonalita");if(t){t==="blu"?document.documentElement.removeAttribute("data-tone"):document.documentElement.setAttribute("data-tone",t)}}catch(e){}</script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><g id="bl2"><g><circle class="p1" cx="0" cy="-9" r="8"/><circle class="p2" cx="8.6" cy="-2.8" r="8"/><circle class="p1" cx="5.3" cy="7.3" r="8"/><circle class="p2" cx="-5.3" cy="7.3" r="8"/><circle class="p1" cx="-8.6" cy="-2.8" r="8"/></g><circle class="pc" r="4.5"/></g><symbol id="ornSym" viewBox="0 0 320 900" preserveAspectRatio="xMaxYMid slice"><path class="vine" d="M308 900C250 820 330 760 285 680S250 560 300 480 255 360 300 270 250 150 300 60"/><path class="vine" d="M320 130C250 108 196 160 238 204 276 238 322 204 300 170"/><path class="vine" d="M320 560C262 548 226 600 262 636 296 664 330 630 312 604"/><g class="lf"><ellipse cx="262" cy="830" rx="19" ry="7" transform="rotate(-30 262 830)"/><ellipse cx="312" cy="730" rx="19" ry="7" transform="rotate(34 312 730)"/><ellipse cx="258" cy="630" rx="19" ry="7" transform="rotate(-34 258 630)"/><ellipse cx="308" cy="520" rx="19" ry="7" transform="rotate(30 308 520)"/><ellipse cx="262" cy="420" rx="19" ry="7" transform="rotate(-32 262 420)"/><ellipse cx="310" cy="320" rx="19" ry="7" transform="rotate(30 310 320)"/><ellipse cx="258" cy="215" rx="19" ry="7" transform="rotate(-30 258 215)"/><ellipse cx="308" cy="110" rx="19" ry="7" transform="rotate(32 308 110)"/></g><use href="#bl2" transform="translate(290 862) scale(1.3)"/><use href="#bl2" transform="translate(282 700) scale(1.7)"/><use href="#bl2" transform="translate(302 590) scale(1.2)"/><use href="#bl2" transform="translate(300 480) scale(1.9)"/><use href="#bl2" transform="translate(266 370) scale(1.4)"/><use href="#bl2" transform="translate(302 262) scale(1.8)"/><use href="#bl2" transform="translate(272 150) scale(1.5)"/><use href="#bl2" transform="translate(300 52) scale(1.3)"/><use href="#bl2" transform="translate(248 780) scale(1)"/><use href="#bl2" transform="translate(246 250) scale(1)"/></symbol></defs></svg>
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Benvenuti al matrimonio di Flavia e Salvatore">
+  <div class="intro-bg"></div>
+  <div class="door door-l"><svg class="orn" aria-hidden="true"><use href="#ornSym"/></svg></div>
+  <div class="door door-r"><svg class="orn" aria-hidden="true"><use href="#ornSym"/></svg></div>
+  <div class="intro-center">
+    <p class="intro-names script"><span>Flavia</span><span class="amp">&amp;</span><span>Salvatore</span></p>
+    <p class="intro-date">19 · 06 · 2027</p>
+    <button type="button" class="intro-btn" id="introBtn">Tocca per entrare</button>
+    <p class="intro-hint">♪ con musica</p>
+  </div>
+</div>
+
 <div class="petals" aria-hidden="true"></div>
 <audio id="bgm" src="music.mp3" loop preload="none"></audio>
 <button type="button" class="music hint" id="musicBtn" aria-pressed="false" aria-label="Attiva la musica">♪</button>
@@ -100,7 +113,7 @@
     <h2>La giornata</h2>
     <div class="tl">
       <div class="tl-item"><span class="tl-time">16:00</span><h3>Cerimonia</h3><p>In chiesa, a Balestrate.</p></div>
-      <div class="tl-item"><span class="tl-time">Dopo la cerimonia</span><h3>Piccolo rinfresco</h3><p>Un brindisi insieme, con bibite e qualche stuzzichino, prima di raggiungere la location.</p></div>
+      <div class="tl-item"><span class="tl-time">Dopo la cerimonia</span><h3>Piccolo rinfresco</h3><p>Per chi vorrà, in un bar vicino alla chiesa.</p></div>
       <div class="tl-item"><span class="tl-time">18:30</span><h3>Tutti alla location</h3><p>Borgo degli Angeli, a Partinico: circa 15 minuti di macchina.</p></div>
       <div class="tl-item"><span class="tl-time">19:00</span><h3>Si festeggia!</h3><p>Cibo, musica e balli per vivere insieme una serata indimenticabile.</p></div>
       <div class="tl-item"><span class="tl-time">00:00</span><h3>Il taglio della torta</h3><p>Un brindisi sotto le stelle e gli ultimi momenti di festa fino all'una circa.</p></div>
@@ -131,13 +144,10 @@
     <p class="quote far">Sogniamo che questa festa sia molto più di un giorno speciale: un'occasione preziosa per riabbracciare le nostre famiglie, condividere momenti felici e farvi innamorare dei profumi e delle meraviglie della nostra Sicilia, magari concedendovi un tuffo rigenerante nelle sue acque cristalline.</p>
   </section>
 
-<section class="band reveal" id="colori">
-    <span class="overline">Gioco dei Colori</span>
+  <section class="band reveal" id="colori">
+    <span class="overline">Un piccolo sondaggio</span>
     <h2>Indovinate i nostri colori</h2>
-    <p>Quale colore accompagnerà il nostro giorno più bello? Esprimete il vostro voto e scoprite la scelta più votata dagli invitati.</p>
-    <p class="poll-meta" style="font-style: italic; margin-top: 4px; margin-bottom: 20px;">
-      P.S. Provate i tre pallini colorati in basso a sinistra per vestire il sito con le diverse sfumature e immaginare l'atmosfera!
-    </p>
+    <p>Secondo voi, quale sarà il colore principale del nostro matrimonio? Votate e guardate cosa pensano gli altri invitati.</p>
     <div class="poll" id="poll">
       <button type="button" class="opt" data-k="blu" style="--sw:#1d4f8b"><span class="dot"></span><span class="nm">Blu</span><span class="bar"><i></i></span><span class="pc">0%</span></button>
       <button type="button" class="opt" data-k="terracotta" style="--sw:#b5593c"><span class="dot"></span><span class="nm">Terracotta</span><span class="bar"><i></i></span><span class="pc">0%</span></button>
