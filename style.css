@@ -1,6 +1,7 @@
 /* TONALITÀ DEL SITO: ognuna usa un solo colore (Blu, Terracotta o Verde petrolio) con i suoi chiari e scuri.
    Blu è quella di partenza; per cambiarla aggiungi data-tone="terracotta" o data-tone="petrolio" al tag <html>. */
 :root{--serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",system-ui,sans-serif;
+  --bg-img:url(sfondo-desktop.jpg);--bg-pos:center 50%;
   /* BLU */
   --terracotta:#1d4f8b;--terracotta-dark:#143a68;--wine:#1b2a3d;--muted:#5a6f82;--line:#cfd9e1;
   --band:rgba(250,252,253,.9);--card:rgba(252,253,254,.95);--nav:rgba(250,252,253,.94);--page:#e9eef2;--overlay:rgba(236,242,246,.74);
@@ -26,8 +27,8 @@
 html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{margin:0;font:400 17px/1.65 var(--sans);color:var(--wine);text-align:center;background:var(--page)}
 /* Foto di sfondo fissa, sbiadita e scaldata */
-body::before{content:"";position:fixed;inset:0;z-index:-1;filter:var(--bg-filter);
-  background:linear-gradient(var(--overlay),var(--overlay)),url(flavia-salvatore-2.jpg) center/cover no-repeat}
+body::before{content:"";position:fixed;left:0;right:0;top:0;height:100vh;height:100lvh;z-index:-1;filter:var(--bg-filter);
+  background:linear-gradient(var(--overlay),var(--overlay)),var(--bg-img) var(--bg-pos)/cover no-repeat}
 .page{overflow:hidden}
 :focus-visible{outline:3px solid var(--terracotta);outline-offset:3px}
 .hide{display:none}
@@ -247,8 +248,8 @@ footer .foot-date{font:400 14px var(--sans);font-style:normal;letter-spacing:.14
 .intro-done .intro{display:none!important}
 html.js:not(.intro-done),html.js:not(.intro-done) body{overflow:hidden}
 .intro.leave{opacity:0;pointer-events:none}
-.intro-bg{position:absolute;inset:-5%;background:linear-gradient(var(--intro-tint),var(--intro-tint)),url(flavia-salvatore-2.jpg) center 60%/cover no-repeat;
-  filter:blur(5px) saturate(.9);transform:scale(1.08);transition:filter 2.4s ease,transform 3s ease}
+.intro-bg{position:absolute;inset:0;background:linear-gradient(var(--intro-tint),var(--intro-tint)),var(--bg-img) var(--bg-pos)/cover no-repeat;
+  filter:blur(5px) saturate(.9);transform:scale(1.04);transition:filter 2.4s ease,transform 3s ease}
 .intro.open .intro-bg{filter:blur(0) saturate(1.05);transform:scale(1)}
 
 /* Tende di velluto: pieghe morbide */
@@ -291,4 +292,39 @@ html.js:not(.intro-done),html.js:not(.intro-done) body{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
   .intro,.intro-bg,.door,.intro-center{transition:none}
   .intro-btn{animation:none}
+}
+
+/* ===== Ritocchi per telefono: tasti più facili da toccare e testi più leggibili ===== */
+html{scroll-padding-top:72px;-webkit-text-size-adjust:100%}
+button,a,.opt,.swatch{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.intro{overscroll-behavior:none;touch-action:none}
+.nav a{font-size:13px;padding:13px 2px}
+.nav-in{padding:4px 16px}
+.overline,.card .tag{font-size:13px}
+.countdown span{font-size:12px}
+.choices label{padding:11px 6px}
+.choices input{width:20px;height:20px}
+.secondary-button,.iban-card .secondary-button{padding:12px 24px;min-height:44px}
+.primary-button,.ghost-button{min-height:46px;padding-top:13px;padding-bottom:13px}
+.tones{gap:10px;padding:7px 12px}
+.tone-dot{position:relative;width:30px;height:30px}
+.tone-dot::after{content:"";position:absolute;inset:-7px}
+@media (max-width:560px){
+  .nav a{font-size:12.5px}
+  .nav-in{gap:2px 14px}
+  .small-note,.poll-meta,.note{font-size:13px}
+}
+/* Menu in alto: le cinque voci devono entrare nello schermo del telefono */
+@media (max-width:560px){
+  .nav-in{gap:0 10px;padding:4px 8px}
+  .nav a{font-size:12px;letter-spacing:.03em;padding:13px 3px}
+}
+@media (max-width:345px){
+  .nav-in{gap:0 6px;padding:4px 6px}
+  .nav a{font-size:11.5px;letter-spacing:.02em;padding:13px 2px}
+}
+
+/* Foto di sfondo: versione verticale per telefoni e tablet in piedi */
+@media (orientation:portrait){
+  :root{--bg-img:url(sfondo-mobile.jpg);--bg-pos:28% 100%}
 }

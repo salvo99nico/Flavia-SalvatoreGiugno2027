@@ -123,8 +123,6 @@ form.addEventListener("submit", (event) => {
   $("openButton")?.addEventListener("click", () => { if (!touched && audio.paused) play(); touched = true; });
 })();
 
-// Il video parte da solo (muto, in loop)
-$("coupleVideo")?.play?.().catch(() => {});
 
 // Pulsanti "Copia IBAN"
 document.querySelectorAll(".copy-iban").forEach((btn) => {
@@ -261,4 +259,17 @@ const POLL_URL = "";
   intro.addEventListener("click", open);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !opened) open(); });
   $("introBtn")?.focus({ preventScroll: true });
+})();
+
+// Il video parte solo quando si vede e si ferma quando si esce (meno dati e meno batteria)
+(function () {
+  const v = $("coupleVideo");
+  if (!v) return;
+  if (!("IntersectionObserver" in window)) { v.play?.().catch(() => {}); return; }
+  new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) v.play?.().catch(() => {});
+      else v.pause?.();
+    });
+  }, { threshold: 0.35 }).observe(v);
 })();
