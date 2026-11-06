@@ -1,6 +1,7 @@
 const $ = (id) => document.getElementById(id);
 
 /* ====== DA CONFIGURARE ====== */
+// Numero WhatsApp che riceve le conferme (prefisso internazionale, senza + e senza spazi)
 const SALVATORE_PHONE = "393924914903";
 /* ============================ */
 
@@ -11,7 +12,6 @@ $("openButton")?.addEventListener("click", () => {
 // Countdown
 const weddingDate = new Date("2027-06-19T15:30:00+02:00");
 const pad = (n) => String(n).padStart(2, "0");
-
 function updateCountdown() {
   const diff = weddingDate - new Date();
   if (diff <= 0) {
@@ -37,10 +37,8 @@ setTimeout(() => {
   document.querySelectorAll(".reveal-start").forEach((el) => el.classList.add("visible"));
 }, 150);
 
-
 // Modulo di conferma
 const form = $("rsvpForm");
-
 function refreshForm() {
   const yes = form.presence.value === "si";
   $("details-yes").classList.toggle("hide", !yes);
@@ -48,13 +46,11 @@ function refreshForm() {
 }
 form.addEventListener("change", refreshForm);
 form.addEventListener("input", refreshForm);
-
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const name = $("name").value.trim();
   const notes = $("notes").value.trim();
   let text;
-
   if (form.presence.value === "si") {
     const adults = $("adults").value || "1";
     const kids = Number($("kids").value) || 0;
@@ -73,18 +69,17 @@ form.addEventListener("submit", (event) => {
       `Nome: ${name}\n` +
       `Messaggio: ${notes || "Vi auguro tanta felicità!"}`;
   }
-
   window.open(`https://wa.me/${SALVATORE_PHONE}?text=${encodeURIComponent(text)}`, "_blank");
 });
 
-// Petali che cadono
+// Petali che cadono (pochi, per non distrarre e non consumare batteria)
 (function () {
   const box = document.querySelector(".petals");
   if (!box) return;
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const count = window.innerWidth < 720 ? 16 : 30;
+  const count = window.innerWidth < 720 ? 12 : 16;
   const fromCss = getComputedStyle(document.documentElement).getPropertyValue("--petals").split(",").map((s) => s.trim()).filter(Boolean);
-  const colors = fromCss.length ? fromCss : ["#c46f4d", "#b85c3b", "#d88b68", "#9f4f38", "#e5a077"];
+  const colors = fromCss.length ? fromCss : ["#d8cdbd", "#c9bba6", "#e8dfd0", "#b8aa94", "#efe7da", "#a89a85"];
   const rnd = (a, b) => a + Math.random() * (b - a);
   for (let i = 0; i < count; i++) {
     const p = document.createElement("span");
@@ -103,38 +98,63 @@ form.addEventListener("submit", (event) => {
   }
 })();
 
-// Musica di sottofondo (parte solo quando l'ospite la attiva)
-(function () {
-  const audio = $("bgm"), btn = $("musicBtn");
-  if (!audio || !btn) return;
+// Musica di sottofondo: parte solo se l'ospite la sceglie (all'ingresso o con il pulsante ♪)
+const audio = $("bgm");
+const musicBtn = $("musicBtn");
+function setMusicState(on) {
+  if (!musicBtn) return;
+  musicBtn.classList.toggle("on", on);
+  musicBtn.classList.remove("hint");
+  musicBtn.setAttribute("aria-pressed", String(on));
+  musicBtn.setAttribute("aria-label", on ? "Metti in pausa la musica" : "Attiva la musica");
+}
+function playMusic() {
+  if (!audio) return;
   audio.volume = 0.35;
-  const set = (on) => {
-    btn.classList.toggle("on", on);
-    btn.classList.remove("hint");
-    btn.setAttribute("aria-pressed", String(on));
-    btn.setAttribute("aria-label", on ? "Metti in pausa la musica" : "Attiva la musica");
-  };
-  const play = () => audio.play().then(() => set(true)).catch(() => set(false));
-  let touched = false;
-  btn.addEventListener("click", () => {
-    touched = true;
-    audio.paused ? play() : (audio.pause(), set(false));
-  });
-  $("openButton")?.addEventListener("click", () => { if (!touched && audio.paused) play(); touched = true; });
-})();
+  audio.play().then(() => setMusicState(true)).catch(() => setMusicState(false));
+}
+musicBtn?.addEventListener("click", () => {
+  if (!audio) return;
+  if (audio.paused) playMusic();
+  else { audio.pause(); setMusicState(false); }
+});
 
-
-// Pulsanti "Copia IBAN"
+// Pulsante "Copia IBAN" (con alternativa per i browser che non permettono la copia diretta)
+function copyText(text) {
+  const legacy = () =>
+    new Promise((resolve, reject) => {
+      const t = document.createElement("textarea");
+      t.value = text;
+      t.setAttribute("readonly", "");
+      t.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+      document.body.appendChild(t);
+      t.select();
+      t.setSelectionRange(0, text.length);
+      let ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) {}
+      t.remove();
+      ok ? resolve() : reject();
+    });
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text).catch(legacy);
+  }
+  return legacy();
+}
 document.querySelectorAll(".copy-iban").forEach((btn) => {
+  const old = btn.textContent;
+  let timer;
   btn.addEventListener("click", () => {
-    navigator.clipboard?.writeText(btn.dataset.iban);
-    const old = btn.textContent;
-    btn.textContent = "Copiato!";
-    setTimeout(() => (btn.textContent = old), 2000);
+    copyText(btn.dataset.iban)
+      .then(() => { btn.textContent = "Copiato!"; })
+      .catch(() => { btn.textContent = "Copialo a mano"; })
+      .finally(() => {
+        clearTimeout(timer);
+        timer = setTimeout(() => (btn.textContent = old), 2200);
+      });
   });
 });
 
-// Apertura: tocca per far aprire il cancello (la musica parte con questo tocco)
+// Apertura: l'ospite sceglie se entrare con o senza musica
 (function () {
   const intro = $("intro");
   if (!intro) return;
@@ -148,19 +168,20 @@ document.querySelectorAll(".copy-iban").forEach((btn) => {
     intro.remove();
     window.scrollTo(0, 0);
   }
-  function open() {
+  function open(withMusic) {
     if (opened) return;
     opened = true;
-    const audio = $("bgm");
-    if (audio && audio.paused) $("musicBtn")?.click();
+    if (withMusic) playMusic();
+    else musicBtn?.classList.remove("hint");
     if (reduce) { finish(); return; }
     intro.classList.add("open");
     setTimeout(() => intro.classList.add("leave"), 1900);
     setTimeout(finish, 3100);
   }
-  intro.addEventListener("click", open);
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !opened) open(); });
-  $("introBtn")?.focus({ preventScroll: true });
+  $("introMusicBtn")?.addEventListener("click", () => open(true));
+  $("introSilentBtn")?.addEventListener("click", () => open(false));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !opened) open(false); });
+  $("introMusicBtn")?.focus({ preventScroll: true });
 })();
 
 // Il video parte solo quando si vede e si ferma quando si esce (meno dati e meno batteria)
