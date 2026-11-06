@@ -9,7 +9,7 @@ $("openButton")?.addEventListener("click", () => {
 });
 
 // Countdown
-const weddingDate = new Date("2027-06-19T16:00:00+02:00");
+const weddingDate = new Date("2027-06-19T15:30:00+02:00");
 const pad = (n) => String(n).padStart(2, "0");
 
 function updateCountdown() {
