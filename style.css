@@ -288,3 +288,7 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 @media (orientation:portrait){
   :root{--bg-img:url(sfondo-mobile.jpg);--bg-pos:28% 100%}
 }
+
+/* Un solo IBAN */
+.ibans.one{max-width:400px;margin-left:auto;margin-right:auto}
+.causale{margin:6px 0 0;font-style:italic;color:var(--muted);font-size:15px;text-align:center}
